@@ -1,0 +1,29 @@
+package com.fredrikpedersen.experis_vin_lotteri.persistance.models;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+import org.springframework.lang.NonNull;
+
+@Data
+@Entity
+@NoArgsConstructor
+@ToString(callSuper = true)
+@SuperBuilder(toBuilder = true)
+@Table(name = "lottery_tickets")
+@EqualsAndHashCode(callSuper = true)
+public class LotteryTicket extends PersistableEntity {
+
+    @NonNull
+    @ManyToOne
+    @JoinColumn(name = "lottery_id", nullable = false)
+    private Lottery lottery;
+
+    @NonNull
+    private Integer ticketNumber;
+
+    private String soldToUsername;
+}

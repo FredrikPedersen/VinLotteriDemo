@@ -1,0 +1,3 @@
+INSERT INTO lotteries (id, created_date, start_time, end_time) VALUES (1, '2023-10-28 12:00:00', '2023-10-28 12:00:00', '2023-10-31 12:00:00');
+INSERT INTO lotteries (id, created_date, start_time, end_time) VALUES (2, '2023-10-28 12:00:00', '2023-11-1 12:00:00', '2023-11-10 12:00:00');
+INSERT INTO lotteries (id, created_date, start_time, end_time) VALUES (3, '2023-10-28 12:00:00', '2023-11-3 12:00:00', '2023-11-14 12:00:00');
