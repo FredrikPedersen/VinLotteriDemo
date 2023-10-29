@@ -1,11 +1,30 @@
 # Notater til ferdigstilling:
  - Admin funksjonalitet for å opprette, avslutte og trekke lotteriene måtte blitt implementert
  - Lag login system basert på hva enn Experis bruker (Okta, Azure AD)
- - Sikre endepunkter basert på rolle
+ - Sikre endepunkter basert på rolle (deltagere og lotteriansvarlig/admin)
  - Legg på Flyway
- - Bytt ut JPA med JDBC Template
-   - Splitt opp funksjonaliteten for hele lotterier og enkeltbilletter 
+   - Lag separat data seeding for dev, test og prod
+ - Bytt ut JPA med JDBC Template (tungvint å jobbe med ORM-verktøy når applikasjonen krever noe mer en veldig enkel CRUD)
+   - Splitt opp funksjonaliteten for lotterier og billetter 
+ - Rydd opp i hva slags exceptions som kastes i valideringstilfeller så en kan få presise responser of feilmeldinger
 
+# HTTP Kall for testing (IntelliJ HTTP Client syntax): 
+
+###
+GET http://localhost:8080/api/lottery
+
+###
+GET http://localhost:8080/api/lottery/tickets/1
+
+###
+POST http://localhost:8080/api/lottery/tickets/buy/
+Content-Type: application/json
+
+{
+   "phonenumber": "+47123456789",
+   "username": "Fredrik",
+   "ticketId": "34"
+}
   
 # Notater om oppgaven  
 Hvert lotteri har 100 nummererte lodd, og kan ha flere viner. De dyreste vinene blir loddet ut sist.
