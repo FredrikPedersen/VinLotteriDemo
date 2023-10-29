@@ -1,6 +1,7 @@
 package com.fredrikpedersen.experis_vin_lotteri.services.lottery;
 
 import com.fredrikpedersen.experis_vin_lotteri.dtos.BuyTicketDto;
+import com.fredrikpedersen.experis_vin_lotteri.dtos.CreateLotteryDto;
 import com.fredrikpedersen.experis_vin_lotteri.dtos.LotteryDto;
 import com.fredrikpedersen.experis_vin_lotteri.dtos.LotteryTicketDto;
 import com.fredrikpedersen.experis_vin_lotteri.exceptions.NoSuchPersistedEntityException;
@@ -34,6 +35,17 @@ public class LotteryServiceImpl extends CrudServiceImpl<LotteryDto, Lottery> imp
         this.ticketRepository = ticketRepository;
         this.ticketMapper = ticketMapper;
         this.paymentService = paymentService;
+    }
+
+    @Override
+    public LotteryDto createNew(final CreateLotteryDto createLotteryDto) {
+        //TODO
+        // Create a new lottery with the wines start and end dates from dto
+        // Create private method for creating tickets and add to lottery
+        // Validate endDate is after startDate
+        // Validate wine list is not empty
+
+        throw new UnsupportedOperationException("NOT YET IMPLEMENTED!");
     }
 
     @Override
@@ -71,5 +83,19 @@ public class LotteryServiceImpl extends CrudServiceImpl<LotteryDto, Lottery> imp
         );
 
         return ticketMapper.toDto(updatedTicket);
+    }
+
+    @Override
+    public List<LotteryTicketDto> closeLottery(final Long lotteryId) {
+        //TODO
+        // Find lottery by ID
+        // For each Wine tied to the lottery, draw a random ticket from the lotteries tickets
+        // One ticket can only win once, so create a list of winner tickets and add drawn tickets to that list
+        // - The drawn ticket must have soldToPhonenumber != null
+        // - The drawn ticket cannot already be in the winners list (unless there are less tickets sold than wines available)
+        // Send sms to the phonenumber associated with the ticket and tell them they've won
+        // Return the list of winning tickets
+
+        throw new UnsupportedOperationException("NOT YET IMPLEMENTED!");
     }
 }
