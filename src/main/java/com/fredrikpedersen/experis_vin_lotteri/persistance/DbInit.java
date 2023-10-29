@@ -13,6 +13,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,12 @@ public class DbInit {
 
             final List<LotteryTicket> tickets = new ArrayList<>();
             for (int i = 1; i <= 100; i++) {
-                tickets.add(LotteryTicket.builder().ticketNumber(i).soldToPhonenumber(null).lottery(lottery).build());
+                String phonenumber = null;
+                if (i % 2 == 0) {
+                    phonenumber = "123456789"; //Simulating some sold tickts
+                }
+
+                tickets.add(LotteryTicket.builder().ticketNumber(i).soldToPhonenumber(phonenumber).lottery(lottery).build());
             }
 
             lottery.setLotteryTickets(tickets);
