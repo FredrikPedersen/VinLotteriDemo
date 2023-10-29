@@ -38,7 +38,7 @@ public class DbInit {
 
             final List<LotteryTicket> tickets = new ArrayList<>();
             for (int i = 1; i <= 100; i++) {
-                tickets.add(LotteryTicket.builder().ticketNumber(i).soldToUsername(null).lottery(lottery).build());
+                tickets.add(LotteryTicket.builder().ticketNumber(i).soldToPhonenumber(null).lottery(lottery).build());
             }
 
             lottery.setLotteryTickets(tickets);

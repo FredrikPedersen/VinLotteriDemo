@@ -46,7 +46,7 @@ public class LotteryServiceImpl extends CrudServiceImpl<LotteryDto, Lottery> imp
     @Override
     public List<LotteryTicketDto> findAllAvailableTicketForLottery(final Long lotteryId) {
         return findById(lotteryId).lotteryTickets().stream()
-                .filter(lotteryTicket -> lotteryTicket.soldToUsername() == null)
+                .filter(lotteryTicket -> lotteryTicket.soldToPhonenumber() == null)
                 .collect(Collectors.toList());
     }
 
@@ -55,7 +55,7 @@ public class LotteryServiceImpl extends CrudServiceImpl<LotteryDto, Lottery> imp
         final LotteryTicket ticket = ticketRepository.findById(buyTicketDto.ticketId())
                 .orElseThrow(() -> new NoSuchPersistedEntityException(String.format("Could not find ticket with ID %s", buyTicketDto.ticketId())));
 
-        if (ticket.getSoldToUsername() != null) {
+        if (ticket.getSoldToPhonenumber() != null) {
             throw new RuntimeException("Ticket is already sold!");
         }
 
@@ -66,7 +66,7 @@ public class LotteryServiceImpl extends CrudServiceImpl<LotteryDto, Lottery> imp
         }
 
         final LotteryTicket updatedTicket = ticketRepository.save(ticket.toBuilder()
-                .soldToUsername(buyTicketDto.username())
+                .soldToPhonenumber(buyTicketDto.phonenumber())
                 .build()
         );
 

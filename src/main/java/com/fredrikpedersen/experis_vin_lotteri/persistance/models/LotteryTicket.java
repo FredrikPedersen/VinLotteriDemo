@@ -25,5 +25,5 @@ public class LotteryTicket extends PersistableEntity {
     @NonNull
     private Integer ticketNumber;
 
-    private String soldToUsername;
+    private String soldToPhonenumber;
 }
